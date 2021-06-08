@@ -34,7 +34,7 @@ def get_word():
 	
 def get_guess(score):
 	for i in score:
-		print(i, end='')
+		print(i, end = '')
 	print('\n')
 	inputting = True
 	while inputting:
