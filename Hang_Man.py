@@ -107,4 +107,5 @@ def main():
 		
 if __name__ == "__main__":
 	main()
+	print("Game exiting.")
 	time.sleep(5)
