@@ -2,19 +2,20 @@ import json
 import time
 import random as rand
 
+def getJson():
+	with open('hang_man.json', 'r') as read_file:
+		data = json.load(read_file)
+		read_file.close()
+	return data
+
 
 def display(image, errors=0):
-	if image != "board":
-		with open('hang_man.json', 'r') as read_file:
-			data = json.load(read_file)
-			read_file.close()
-		for row in data[image]:
+	data = getJson()
+	if image == "board":
+		for row in data[image][errors]:
 			print(row)
 	else:
-		with open('hang_man.json', 'r') as read_file:
-			data = json.load(read_file)
-			read_file.close()
-		for row in data[image][errors]:
+		for row in data[image]:
 			print(row)
 			
 			
@@ -81,8 +82,8 @@ def main():
 	input()
 	word = get_word()
 	saved_word = [None] * len(word)
-	for i,let in enumerate(word):
-		saved_word[i] = let
+	for i,letter in enumerate(word):
+		saved_word[i] = letter
 	score = ['*'] * len(word)
 	errors = 0
 	display("board")
